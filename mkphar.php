@@ -4,7 +4,7 @@
 function Usage() {
 	global $argv;
 	
-	print( "Usage: " . $argv[0] . " app_dir phar_path [main_script]\n" );
+	print( "Usage: " . $argv[0] . "  /path/to/src /dest/path/to/dest.phar [main_script]\n" );
 }
 
 if ( count( $argv ) < 3 )
@@ -32,7 +32,7 @@ switch( false )
 	case file_exists( $appDir.DIRECTORY_SEPARATOR.$mainScript ):
 		die( 'Main Script Not Exists' );
 }
-
+ini_set('phar.readonly','Off');
 $phar	= new Phar(
 	$pharPath, 
 	FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME, 
